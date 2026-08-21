@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evaluasi — TIK Ceria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFF8EA; --paper:#FFFDF7; --ink:#2B3A4A; --ink-soft:#5B6B7A;
+    --sky:#3FB6E8; --sky-deep:#1F97C9; --sun:#FFC93C; --grass:#3FAE68;
+    --coral:#FF6B5E; --violet:#8B6BE8; --line: rgba(43,58,74,0.10);
+    --radius-lg: 28px; --radius-md: 18px;
+  }
+  *{box-sizing:border-box;}
+  body{ margin:0; background:var(--cream); color:var(--ink); font-family:'Nunito', sans-serif; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3{ font-family:'Baloo 2', sans-serif; margin:0; }
+  a{ color:inherit; text-decoration:none; }
+  button{ font-family:inherit; cursor:pointer; }
+
+  header{ position:sticky; top:0; z-index:50; background:rgba(255,248,234,0.92); backdrop-filter:blur(10px); border-bottom:2px solid var(--line); }
+  .nav-wrap{ max-width:1180px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:14px 24px; flex-wrap:wrap; gap:10px; }
+  .logo{ display:flex; align-items:center; gap:10px; font-family:'Baloo 2'; font-weight:800; font-size:1.25rem; color:var(--sky-deep); }
+  .logo .mark{ width:36px; height:36px; border-radius:12px; background:linear-gradient(150deg, var(--sky), var(--sky-deep)); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  nav.menu{ display:flex; align-items:center; gap:4px; flex-wrap:wrap; }
+  nav.menu a{ padding:9px 14px; border-radius:999px; font-weight:700; font-size:0.9rem; color:var(--ink-soft); transition:all .18s ease; }
+  nav.menu a:hover{ background:rgba(63,182,232,0.14); color:var(--sky-deep); }
+  nav.menu a.active{ background:var(--sky-deep); color:#fff; }
+
+  main{ max-width:760px; margin:0 auto; padding:44px 24px 60px; }
+  .page-head{ text-align:center; max-width:600px; margin:0 auto 30px; }
+  .kicker{ color:var(--coral); font-weight:800; font-size:0.85rem; text-transform:uppercase; letter-spacing:.08em; }
+  .page-head h1{ font-size:clamp(1.8rem, 4vw, 2.6rem); margin-top:8px; }
+  .page-head p{ color:var(--ink-soft); font-weight:600; margin-top:12px; line-height:1.6; }
+
+  .qcard{ background:var(--paper); border:2px solid var(--line); border-radius:var(--radius-md); padding:22px 22px 18px; margin-bottom:18px; }
+  .qcard .qnum{ display:inline-block; background:var(--coral); color:#fff; font-weight:800; font-size:0.78rem; padding:4px 12px; border-radius:999px; margin-bottom:12px; }
+  .qcard h3{ font-size:1.02rem; margin-bottom:14px; line-height:1.5; }
+  .opt{ display:flex; align-items:center; gap:10px; padding:11px 14px; border-radius:12px; border:2px solid var(--line); margin-bottom:8px; cursor:pointer; font-weight:700; font-size:0.92rem; transition:all .15s ease; }
+  .opt:hover{ border-color:var(--sky); background:rgba(63,182,232,0.06); }
+  .opt input{ accent-color: var(--sky-deep); }
+  .opt.correct{ border-color:var(--grass); background:rgba(63,174,104,0.12); }
+  .opt.wrong{ border-color:var(--coral); background:rgba(255,107,94,0.1); }
+
+  .submit-bar{ text-align:center; margin-top:28px; }
+  .btn-submit{ background:var(--sun); color:#5B3B00; border:none; border-radius:16px; padding:14px 34px; font-weight:800; font-size:1rem; box-shadow:0 5px 0 #DFA31C; }
+  .btn-submit:hover{ transform:translateY(-2px); }
+  .btn-submit:active{ transform:translateY(2px); box-shadow:0 2px 0 #DFA31C; }
+  .btn-submit:disabled{ opacity:0.5; cursor:not-allowed; transform:none; }
+
+  .result{ display:none; text-align:center; margin-top:24px; padding:30px; border-radius:var(--radius-lg); background:linear-gradient(150deg, var(--sky), var(--sky-deep)); color:#fff; }
+  .result.show{ display:block; }
+  .result .score{ font-family:'Baloo 2'; font-size:2.6rem; font-weight:800; margin:6px 0; }
+  .result p{ font-weight:700; opacity:0.92; }
+  .result button{ margin-top:14px; background:#fff; color:var(--sky-deep); border:none; border-radius:14px; padding:10px 22px; font-weight:800; }
+
+  .back-link{ display:inline-flex; align-items:center; gap:6px; margin-top:36px; font-weight:800; color:var(--sky-deep); }
+  footer{ margin-top:60px; border-top:2px solid var(--line); background:var(--ink); color:rgba(255,255,255,0.6); text-align:center; padding:22px 24px; font-size:0.8rem; font-weight:600; }
+
+  @media (max-width:600px){ nav.menu{ display:none; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap">
+    <a href="index.html" class="logo">
+      <span class="mark">
+        <svg viewBox="0 0 24 24" fill="none" width="20" height="20"><rect x="3" y="4" width="18" height="12" rx="2" fill="#fff" opacity="0.95"/><circle cx="12" cy="10" r="3" fill="#3FB6E8"/></svg>
+      </span>
+      TIK Ceria
+    </a>
+    <nav class="menu">
+      <a href="index.html">Beranda</a>
+      <a href="materi.html">Materi</a>
+      <a href="video.html">Video</a>
+      <a href="game.html">Kuis</a>
+      <a href="evaluasi.html" class="active">Evaluasi</a>
+      <a href="profil.html">Profil</a>
+      <a href="index.html#tentang">Tentang</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="page-head">
+    <span class="kicker">📝 Uji Kemampuanmu</span>
+    <h1>Evaluasi TIK</h1>
+    <p>Jawab semua soal di bawah ini, lalu klik "Kumpulkan Jawaban" untuk melihat nilaimu.</p>
+  </div>
+
+  <form id="quizForm">
+    <div class="qcard" data-answer="b">
+      <span class="qnum">Soal 1</span>
+      <h3>Alat yang digunakan untuk menggerakkan kursor di layar komputer disebut...</h3>
+      <label class="opt"><input type="radio" name="q1" value="a"> A. Keyboard</label>
+      <label class="opt"><input type="radio" name="q1" value="b"> B. Mouse</label>
+      <label class="opt"><input type="radio" name="q1" value="c"> C. Printer</label>
+      <label class="opt"><input type="radio" name="q1" value="d"> D. Speaker</label>
+    </div>
+
+    <div class="qcard" data-answer="c">
+      <span class="qnum">Soal 2</span>
+      <h3>Bagian komputer yang berfungsi sebagai "otak" dan memproses data disebut...</h3>
+      <label class="opt"><input type="radio" name="q2" value="a"> A. Monitor</label>
+      <label class="opt"><input type="radio" name="q2" value="b"> B. Keyboard</label>
+      <label class="opt"><input type="radio" name="q2" value="c"> C. CPU</label>
+      <label class="opt"><input type="radio" name="q2" value="d"> D. Mouse</label>
+    </div>
+
+    <div class="qcard" data-answer="a">
+      <span class="qnum">Soal 3</span>
+      <h3>Sebelum mematikan komputer, hal pertama yang harus dilakukan adalah...</h3>
+      <label class="opt"><input type="radio" name="q3" value="a"> A. Menyimpan semua pekerjaan</label>
+      <label class="opt"><input type="radio" name="q3" value="b"> B. Mencabut kabel listrik</label>
+      <label class="opt"><input type="radio" name="q3" value="c"> C. Menutup mata</label>
+      <label class="opt"><input type="radio" name="q3" value="d"> D. Menekan tombol power berkali-kali</label>
+    </div>
+
+    <div class="qcard" data-answer="d">
+      <span class="qnum">Soal 4</span>
+      <h3>Alat penyimpanan data kecil yang bisa dibawa ke mana-mana disebut...</h3>
+      <label class="opt"><input type="radio" name="q4" value="a"> A. Monitor</label>
+      <label class="opt"><input type="radio" name="q4" value="b"> B. CPU</label>
+      <label class="opt"><input type="radio" name="q4" value="c"> C. Speaker</label>
+      <label class="opt"><input type="radio" name="q4" value="d"> D. Flashdisk</label>
+    </div>
+
+    <div class="qcard" data-answer="b">
+      <span class="qnum">Soal 5</span>
+      <h3>Sebelum menggunakan internet, sebaiknya kita...</h3>
+      <label class="opt"><input type="radio" name="q5" value="a"> A. Membagikan alamat rumah ke orang asing</label>
+      <label class="opt"><input type="radio" name="q5" value="b"> B. Minta izin orang tua</label>
+      <label class="opt"><input type="radio" name="q5" value="c"> C. Mematikan komputer</label>
+      <label class="opt"><input type="radio" name="q5" value="d"> D. Menutup mata</label>
+    </div>
+
+    <div class="submit-bar">
+      <button type="button" class="btn-submit" id="submitBtn">✅ Kumpulkan Jawaban</button>
+    </div>
+  </form>
+
+  <div class="result" id="result">
+    <div>Nilai Kamu</div>
+    <div class="score" id="scoreText">0 / 5</div>
+    <p id="resultMsg"></p>
+    <button id="retryBtn">Coba Lagi</button>
+  </div>
+
+  <a href="index.html" class="back-link">← Kembali ke Beranda</a>
+</main>
+
+<footer>© 2026 TIK Ceria — Belajar TIK Jadi Menyenangkan! 💛</footer>
+
+<script>
+  const form = document.getElementById('quizForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const result = document.getElementById('result');
+  const scoreText = document.getElementById('scoreText');
+  const resultMsg = document.getElementById('resultMsg');
+
+  submitBtn.addEventListener('click', () => {
+    const cards = document.querySelectorAll('.qcard');
+    let score = 0;
+
+    cards.forEach(card => {
+      const answer = card.dataset.answer;
+      const name = card.querySelector('input').name;
+      const checked = card.querySelector(`input[name="${name}"]:checked`);
+      const opts = card.querySelectorAll('.opt');
+
+      opts.forEach(opt => {
+        const val = opt.querySelector('input').value;
+        if (val === answer) opt.classList.add('correct');
+        else if (checked && val === checked.value) opt.classList.add('wrong');
+      });
+
+      if (checked && checked.value === answer) score++;
+    });
+
+    scoreText.textContent = score + ' / ' + cards.length;
+    resultMsg.textContent = score === cards.length
+      ? 'Sempurna! Kamu hebat sekali 🎉'
+      : score >= cards.length / 2
+      ? 'Bagus! Terus semangat belajar ya 😊'
+      : 'Ayo belajar lagi, kamu pasti bisa! 💪';
+
+    result.classList.add('show');
+    submitBtn.disabled = true;
+    document.querySelectorAll('.opt input').forEach(i => i.disabled = true);
+    result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+
+  document.getElementById('retryBtn').addEventListener('click', () => location.reload());
+</script>
+</body>
+</html>

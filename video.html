@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Pembelajaran — TIK Ceria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFF8EA; --paper:#FFFDF7; --ink:#2B3A4A; --ink-soft:#5B6B7A;
+    --sky:#3FB6E8; --sky-deep:#1F97C9; --sun:#FFC93C; --grass:#3FAE68;
+    --coral:#FF6B5E; --violet:#8B6BE8; --line: rgba(43,58,74,0.10);
+    --radius-lg: 28px; --radius-md: 18px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{ margin:0; background:var(--cream); color:var(--ink); font-family:'Nunito', sans-serif; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3{ font-family:'Baloo 2', sans-serif; margin:0; }
+  a{ color:inherit; text-decoration:none; }
+  button{ font-family:inherit; cursor:pointer; }
+
+  header{ position:sticky; top:0; z-index:50; background:rgba(255,248,234,0.92); backdrop-filter:blur(10px); border-bottom:2px solid var(--line); }
+  .nav-wrap{ max-width:1180px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:14px 24px; flex-wrap:wrap; gap:10px; }
+  .logo{ display:flex; align-items:center; gap:10px; font-family:'Baloo 2'; font-weight:800; font-size:1.25rem; color:var(--sky-deep); }
+  .logo .mark{ width:36px; height:36px; border-radius:12px; background:linear-gradient(150deg, var(--sky), var(--sky-deep)); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  nav.menu{ display:flex; align-items:center; gap:4px; flex-wrap:wrap; }
+  nav.menu a{ padding:9px 14px; border-radius:999px; font-weight:700; font-size:0.9rem; color:var(--ink-soft); transition:all .18s ease; }
+  nav.menu a:hover{ background:rgba(63,182,232,0.14); color:var(--sky-deep); }
+  nav.menu a.active{ background:var(--sky-deep); color:#fff; }
+
+  main{ max-width:1080px; margin:0 auto; padding:44px 24px 60px; }
+  .page-head{ text-align:center; max-width:600px; margin:0 auto 36px; }
+  .kicker{ color:var(--violet); font-weight:800; font-size:0.85rem; text-transform:uppercase; letter-spacing:.08em; }
+  .page-head h1{ font-size:clamp(1.8rem, 4vw, 2.6rem); margin-top:8px; }
+  .page-head p{ color:var(--ink-soft); font-weight:600; margin-top:12px; line-height:1.6; }
+
+  .video-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:22px; }
+  .video-card{ background:var(--paper); border:2px solid var(--line); border-radius:var(--radius-md); overflow:hidden; display:flex; flex-direction:column; }
+  .video-frame{ position:relative; width:100%; aspect-ratio:16/9; background:linear-gradient(150deg, var(--violet), #6a4fc9); display:flex; align-items:center; justify-content:center; }
+  .video-frame iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
+  .empty-state{ text-align:center; color:#fff; padding:20px; }
+  .empty-state .icon{ font-size:2.2rem; margin-bottom:6px; }
+  .empty-state p{ font-weight:700; font-size:0.85rem; opacity:0.9; margin:4px 0 0; }
+  .video-info{ padding:18px 20px 22px; }
+  .video-info h3{ font-size:1.05rem; margin-bottom:6px; }
+  .video-info p{ font-size:0.85rem; color:var(--ink-soft); font-weight:600; margin:0; line-height:1.5; }
+
+  .back-link{ display:inline-flex; align-items:center; gap:6px; margin-top:36px; font-weight:800; color:var(--sky-deep); }
+
+  footer{ margin-top:60px; border-top:2px solid var(--line); background:var(--ink); color:rgba(255,255,255,0.6); text-align:center; padding:22px 24px; font-size:0.8rem; font-weight:600; }
+
+  @media (max-width:760px){ .video-grid{ grid-template-columns:1fr; } nav.menu{ display:none; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap">
+    <a href="index.html" class="logo">
+      <span class="mark">
+        <svg viewBox="0 0 24 24" fill="none" width="20" height="20"><rect x="3" y="4" width="18" height="12" rx="2" fill="#fff" opacity="0.95"/><circle cx="12" cy="10" r="3" fill="#3FB6E8"/></svg>
+      </span>
+      TIK Ceria
+    </a>
+    <nav class="menu">
+      <a href="index.html">Beranda</a>
+      <a href="index.html#materi">Materi</a>
+      <a href="video.html" class="active">Video</a>
+      <a href="game.html">Kuis</a>
+      <a href="index.html#evaluasi">Evaluasi</a>
+      <a href="index.html#profil">Profil</a>
+      <a href="index.html#tentang">Tentang</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="page-head">
+    <span class="kicker">🎬 Belajar Sambil Nonton</span>
+    <h1>Video Pembelajaran TIK</h1>
+    <p>Tonton video-video seru berikut untuk belajar TIK bersama teman-teman kelas 3!</p>
+  </div>
+
+  <!--
+    CATATAN UNTUK GURU / PEMBUAT (hapus komentar ini kalau mau):
+    Untuk menambahkan video YouTube, cari kode "VIDEO_ID_1", "VIDEO_ID_2", dst di bawah ini,
+    lalu ganti dengan ID video YouTube-mu.
+    Contoh: link https://www.youtube.com/watch?v=ABC12345xyz
+    ID-nya adalah bagian setelah "v=", yaitu: ABC12345xyz
+    Ganti data-id="" menjadi data-id="ABC12345xyz"
+  -->
+
+  <div class="video-grid">
+    <div class="video-card">
+      <div class="video-frame" data-id="prY7UtS8wVk">
+        <div class="empty-state">
+          <div class="icon">🎥</div>
+          <p>Video segera hadir</p>
+        </div>
+      </div>
+      <div class="video-info">
+        <h3>Mengenal Bagian-Bagian Komputer</h3>
+        <p>Kenali mouse, keyboard, monitor, dan CPU beserta fungsinya masing-masing.</p>
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="video-frame" data-id="">
+        <div class="empty-state">
+          <div class="icon">🎥</div>
+          <p>Video segera hadir</p>
+        </div>
+      </div>
+      <div class="video-info">
+        <h3>Cara Menyalakan dan Mematikan Komputer</h3>
+        <p>Langkah-langkah aman menyalakan dan mematikan komputer dengan benar.</p>
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="video-frame" data-id="">
+        <div class="empty-state">
+          <div class="icon">🎥</div>
+          <p>Video segera hadir</p>
+        </div>
+      </div>
+      <div class="video-info">
+        <h3>Belajar Mengetik untuk Pemula</h3>
+        <p>Posisi jari yang benar saat mengetik di keyboard.</p>
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="video-frame" data-id="">
+        <div class="empty-state">
+          <div class="icon">🎥</div>
+          <p>Video segera hadir</p>
+        </div>
+      </div>
+      <div class="video-info">
+        <h3>Internet Sehat untuk Anak</h3>
+        <p>Tips aman dan bijak menggunakan internet sejak dini.</p>
+      </div>
+    </div>
+  </div>
+
+  <a href="index.html" class="back-link">← Kembali ke Beranda</a>
+</main>
+
+<footer>© 2026 TIK Ceria — Belajar TIK Jadi Menyenangkan! 💛</footer>
+
+<script>
+  document.querySelectorAll('.video-frame').forEach(frame => {
+    const id = frame.getAttribute('data-id');
+    if (id && id.trim() !== '') {
+      frame.innerHTML = `<iframe src="https://www.youtube.com/embed/${id}" title="Video pembelajaran" allowfullscreen loading="lazy"></iframe>`;
+    }
+  });
+</script>
+</body>
+</html>

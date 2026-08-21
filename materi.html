@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Materi TIK — TIK Ceria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFF8EA; --paper:#FFFDF7; --ink:#2B3A4A; --ink-soft:#5B6B7A;
+    --sky:#3FB6E8; --sky-deep:#1F97C9; --sun:#FFC93C; --grass:#3FAE68;
+    --coral:#FF6B5E; --violet:#8B6BE8; --line: rgba(43,58,74,0.10);
+    --radius-lg: 28px; --radius-md: 18px;
+  }
+  *{box-sizing:border-box;}
+  body{ margin:0; background:var(--cream); color:var(--ink); font-family:'Nunito', sans-serif; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3{ font-family:'Baloo 2', sans-serif; margin:0; }
+  a{ color:inherit; text-decoration:none; }
+  button{ font-family:inherit; cursor:pointer; }
+
+  header{ position:sticky; top:0; z-index:50; background:rgba(255,248,234,0.92); backdrop-filter:blur(10px); border-bottom:2px solid var(--line); }
+  .nav-wrap{ max-width:1180px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:14px 24px; flex-wrap:wrap; gap:10px; }
+  .logo{ display:flex; align-items:center; gap:10px; font-family:'Baloo 2'; font-weight:800; font-size:1.25rem; color:var(--sky-deep); }
+  .logo .mark{ width:36px; height:36px; border-radius:12px; background:linear-gradient(150deg, var(--sky), var(--sky-deep)); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  nav.menu{ display:flex; align-items:center; gap:4px; flex-wrap:wrap; }
+  nav.menu a{ padding:9px 14px; border-radius:999px; font-weight:700; font-size:0.9rem; color:var(--ink-soft); transition:all .18s ease; }
+  nav.menu a:hover{ background:rgba(63,182,232,0.14); color:var(--sky-deep); }
+  nav.menu a.active{ background:var(--sky-deep); color:#fff; }
+
+  main{ max-width:1080px; margin:0 auto; padding:44px 24px 60px; }
+  .page-head{ text-align:center; max-width:600px; margin:0 auto 36px; }
+  .kicker{ color:var(--grass); font-weight:800; font-size:0.85rem; text-transform:uppercase; letter-spacing:.08em; }
+  .page-head h1{ font-size:clamp(1.8rem, 4vw, 2.6rem); margin-top:8px; }
+  .page-head p{ color:var(--ink-soft); font-weight:600; margin-top:12px; line-height:1.6; }
+
+  .topics{ display:flex; flex-direction:column; gap:16px; }
+  .topic{ background:var(--paper); border:2px solid var(--line); border-radius:var(--radius-md); overflow:hidden; }
+  .topic-head{ display:flex; align-items:center; gap:14px; padding:18px 20px; cursor:pointer; user-select:none; }
+  .topic-head .icon{ width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:1.3rem; color:#fff; flex-shrink:0; }
+  .topic-head h3{ font-size:1.05rem; flex:1; }
+  .topic-head .arrow{ font-size:0.9rem; color:var(--ink-soft); transition:transform .2s ease; }
+  .topic.open .arrow{ transform:rotate(180deg); }
+  .topic-body{ max-height:0; overflow:hidden; transition:max-height .25s ease; }
+  .topic.open .topic-body{ max-height:400px; }
+  .topic-body-inner{ padding:0 20px 20px; color:var(--ink-soft); font-weight:600; font-size:0.92rem; line-height:1.7; }
+  .topic-body-inner ul{ margin:8px 0 0; padding-left:20px; }
+  .topic-body-inner li{ margin-bottom:4px; }
+
+  .t1 .icon{ background:var(--sky-deep); }
+  .t2 .icon{ background:var(--grass); }
+  .t3 .icon{ background:var(--sun); color:#5B3B00; }
+  .t4 .icon{ background:var(--coral); }
+  .t5 .icon{ background:var(--violet); }
+
+  .back-link{ display:inline-flex; align-items:center; gap:6px; margin-top:36px; font-weight:800; color:var(--sky-deep); }
+  footer{ margin-top:60px; border-top:2px solid var(--line); background:var(--ink); color:rgba(255,255,255,0.6); text-align:center; padding:22px 24px; font-size:0.8rem; font-weight:600; }
+
+  @media (max-width:600px){ nav.menu{ display:none; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap">
+    <a href="index.html" class="logo">
+      <span class="mark">
+        <svg viewBox="0 0 24 24" fill="none" width="20" height="20"><rect x="3" y="4" width="18" height="12" rx="2" fill="#fff" opacity="0.95"/><circle cx="12" cy="10" r="3" fill="#3FB6E8"/></svg>
+      </span>
+      TIK Ceria
+    </a>
+    <nav class="menu">
+      <a href="index.html">Beranda</a>
+      <a href="materi.html" class="active">Materi</a>
+      <a href="video.html">Video</a>
+      <a href="game.html">Kuis</a>
+      <a href="evaluasi.html">Evaluasi</a>
+      <a href="profil.html">Profil</a>
+      <a href="index.html#tentang">Tentang</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="page-head">
+    <span class="kicker">📘 Ayo Belajar</span>
+    <h1>Materi TIK Kelas 3</h1>
+    <p>Klik setiap topik untuk membuka dan membaca materinya. Pelajari satu per satu ya!</p>
+  </div>
+
+  <div class="topics">
+    <div class="topic t1">
+      <div class="topic-head" onclick="toggle(this)">
+        <span class="icon">🖥️</span>
+        <h3>1. Mengenal Komputer</h3>
+        <span class="arrow">▾</span>
+      </div>
+      <div class="topic-body">
+        <div class="topic-body-inner">
+          Komputer adalah alat elektronik yang bisa membantu kita menulis, menggambar, bermain, dan belajar. Komputer terdiri dari beberapa bagian penting:
+          <ul>
+            <li><b>Monitor</b> — layar untuk melihat tampilan</li>
+            <li><b>CPU</b> — otak komputer yang memproses data</li>
+            <li><b>Keyboard</b> — untuk mengetik huruf dan angka</li>
+            <li><b>Mouse</b> — untuk menggerakkan kursor di layar</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic t2">
+      <div class="topic-head" onclick="toggle(this)">
+        <span class="icon">🔌</span>
+        <h3>2. Menyalakan & Mematikan Komputer</h3>
+        <span class="arrow">▾</span>
+      </div>
+      <div class="topic-body">
+        <div class="topic-body-inner">
+          Untuk menyalakan komputer, tekan tombol power dan tunggu sampai layar menyala. Untuk mematikan komputer dengan aman:
+          <ul>
+            <li>Simpan semua pekerjaanmu terlebih dahulu</li>
+            <li>Tutup semua program yang terbuka</li>
+            <li>Klik menu "Shut Down" atau "Matikan"</li>
+            <li>Tunggu sampai komputer benar-benar mati</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic t3">
+      <div class="topic-head" onclick="toggle(this)">
+        <span class="icon">⌨️</span>
+        <h3>3. Belajar Mengetik</h3>
+        <span class="arrow">▾</span>
+      </div>
+      <div class="topic-body">
+        <div class="topic-body-inner">
+          Mengetik yang benar menggunakan 10 jari, bukan hanya 2 jari saja. Posisi jari yang benar disebut "home row" — jari kiri di tombol A S D F dan jari kanan di tombol J K L ;. Latihan mengetik secara rutin akan membuatmu semakin cepat dan tepat!
+        </div>
+      </div>
+    </div>
+
+    <div class="topic t4">
+      <div class="topic-head" onclick="toggle(this)">
+        <span class="icon">🌐</span>
+        <h3>4. Internet Sehat untuk Anak</h3>
+        <span class="arrow">▾</span>
+      </div>
+      <div class="topic-body">
+        <div class="topic-body-inner">
+          Internet itu seru, tapi harus digunakan dengan bijak:
+          <ul>
+            <li>Selalu minta izin orang tua sebelum menggunakan internet</li>
+            <li>Jangan membagikan data pribadi ke orang asing</li>
+            <li>Gunakan internet untuk belajar hal-hal baik</li>
+            <li>Jika menemukan sesuatu yang aneh, segera beri tahu orang tua atau guru</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic t5">
+      <div class="topic-head" onclick="toggle(this)">
+        <span class="icon">💾</span>
+        <h3>5. Menyimpan Data</h3>
+        <span class="arrow">▾</span>
+      </div>
+      <div class="topic-body">
+        <div class="topic-body-inner">
+          Data seperti tugas, gambar, atau foto bisa disimpan di beberapa tempat:
+          <ul>
+            <li><b>Harddisk</b> — penyimpanan utama di dalam komputer</li>
+            <li><b>Flashdisk</b> — penyimpanan kecil yang bisa dibawa ke mana-mana</li>
+            <li><b>Cloud</b> — penyimpanan online lewat internet</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a href="index.html" class="back-link">← Kembali ke Beranda</a>
+</main>
+
+<footer>© 2026 TIK Ceria — Belajar TIK Jadi Menyenangkan! 💛</footer>
+
+<script>
+  function toggle(el){
+    const topic = el.parentElement;
+    const wasOpen = topic.classList.contains('open');
+    document.querySelectorAll('.topic').forEach(t => t.classList.remove('open'));
+    if (!wasOpen) topic.classList.add('open');
+  }
+</script>
+</body>
+</html>
